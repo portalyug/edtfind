@@ -1,0 +1,11 @@
+# OneScript / OPM
+oscript_modules/
+*.ospx
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+Thumbs.db
+.DS_Store
