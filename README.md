@@ -84,6 +84,7 @@ edtfind find -v
 - [logos](https://github.com/oscript-library/logos) — логирование
 - [cli](https://github.com/oscript-library/cli) — парсинг аргументов командной строки
 - [fs](https://github.com/oscript-library/fs) — работа с файловой системой
+- [semver](https://github.com/oscript-library/semver) — сравнение и сортировка версий
 
 ## Лицензия
 
