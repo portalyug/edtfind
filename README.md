@@ -49,6 +49,9 @@ edtfind find --edt-version 2024.1.2
 
 # Подробный вывод (отладка)
 edtfind find -v
+
+# Версия утилиты
+edtfind --version
 ```
 
 ## Алгоритм работы
