@@ -1,0 +1,53 @@
+# Подготовка релиза и публикация в хабе
+name: Подготовка релиза и публикация в хабе
+
+on:
+    release:
+        types: [published]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        oscript_version: ['1.9.3']
+        package_mask: ["edtfind-*.ospx"]
+    steps:
+      # Загрузка проекта
+      - name: Актуализация
+        uses: actions/checkout@v4.2.2
+
+      # Установка OneScript конкретной версии
+      - name: Установка OneScript
+        uses: otymko/setup-onescript@v1.5
+        with:
+          version: ${{ matrix.oscript_version }}
+
+      # Установка зависимостей пакета
+      - name: Установка зависимостей
+        run: |
+          opm install opm
+          opm install
+
+      - name: Сборка пакета
+        run: opm build
+
+      - name: Заливка артефактов
+        uses: actions/upload-artifact@v6.0.0
+        with:
+          name: edtfind.ospx.zip
+          path: ./${{ matrix.package_mask }}
+
+      - name: Заливка в релиз
+        uses: AButler/upload-release-assets@v3.0.1
+        with:
+          files: ./${{ matrix.package_mask }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Публикация в hub.oscript.io
+        shell: bash
+        run: opm push -f ./${{ matrix.package_mask }} --token ${{ env.TOKEN }} -c stable
+        env:
+          TOKEN: ${{ secrets.OPM_TOKEN }}
