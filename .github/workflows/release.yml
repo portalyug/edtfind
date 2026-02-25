@@ -44,7 +44,7 @@ jobs:
         uses: AButler/upload-release-assets@v3.0.1
         with:
           files: ./${{ matrix.package_mask }}
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ secrets.RELEASE_TOKEN }}
 
       - name: Публикация в hub.oscript.io
         shell: bash
