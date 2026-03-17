@@ -48,6 +48,4 @@ jobs:
 
       - name: Публикация в hub.oscript.io
         shell: bash
-        run: opm push -f ./${{ matrix.package_mask }} --token ${{ env.TOKEN }} -c stable
-        env:
-          TOKEN: ${{ secrets.OPM_TOKEN }}
+        run: opm push --token "${{ secrets.RELEASE_TOKEN }}" -c stable ./${{ matrix.package_mask }}
