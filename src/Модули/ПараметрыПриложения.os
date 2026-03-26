@@ -4,7 +4,7 @@
 // was not distributed with this file, You can obtain one
 // at http://mozilla.org/MPL/2.0/.
 // ----------------------------------------------------------
-// Codebase: https://github.com/senja006/EDTfind/
+// Codebase: https://github.com/portalyug/edtfind
 // ----------------------------------------------------------
 
 #Использовать logos
